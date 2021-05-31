@@ -1,25 +1,17 @@
 #include "esp_camera.h"
 #include <WiFi.h>
 #include <ArduinoWebsockets.h>
-
-//
-// WARNING!!! Make sure that you have either selected ESP32 Wrover Module,
-//            or another board which has PSRAM enabled
-//
-
-// Select camera model
-//#define CAMERA_MODEL_WROVER_KIT
-//#define CAMERA_MODEL_ESP_EYE
-//#define CAMERA_MODEL_M5STACK_PSRAM
-//#define CAMERA_MODEL_M5STACK_WIDE
-#define CAMERA_MODEL_AI_THINKER
-
 #include "camera_pins.h"
 
-const char* ssid = "HUAWEI-3";
-const char* password = "Raya6969";
-const char* websocket_server_host = "34.126.131.88";
-const uint16_t websocket_server_port = 65080;
+#define CAMERA_MODEL_AI_THINKER
+
+
+
+const char* ssid = "HUAWEI-3"; // add your ssid name to connect to the internet
+const char* password = "Raya6969"; // add your ssid password
+const char* websocket_server_host = "34.126.131.88";// add your external ip address virtual machine in gcp,
+                                                    // if you dont want to change the ip address frequently. Use static ip address
+const uint16_t websocket_server_port = 65080; // default port for websocket
 
 using namespace websockets;
 WebsocketsClient client;
@@ -52,8 +44,8 @@ void setup() {
   config.pixel_format = PIXFORMAT_JPEG;
   //init with high specs to pre-allocate larger buffers
   if(psramFound()){
-    config.frame_size = FRAMESIZE_QVGA;
-    config.jpeg_quality = 10;
+    config.frame_size = FRAMESIZE_QVGA; // change the framesize from QVGA|CIF|VGA|SVGA|XGA|SXGA|UXGA
+    config.jpeg_quality = 10; // 0 - 40 quality of video
     config.fb_count = 1;
   } else {
     config.frame_size = FRAMESIZE_SVGA;
