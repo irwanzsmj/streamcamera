@@ -21,12 +21,12 @@ How to create CCTV Prototype using ESP32 Cam Module :
     - Check the Node.js and NPM version in your VM
         "node -v"
         "npm -v"
-    - Create new file with name 'server.js' and 'client.html'
-        "touch server.js client.html"
-    - Edit 'server.js' using nano or vi, copy and paste the server.js in CameraServer folder in this repo
-        "vi server.js"
-    - Edit 'client.html' using nano or vi, copy and paste the client.html in CameraServer folder in this repo
-        "vi client.html"
+    - Create new file with name 'cameraserver.js' and 'cameraclient.html'
+        "touch cameraserver.js cameraclient.html"
+    - Edit 'cameraserver.js' using nano or vi, copy and paste the cameraserver.js in CameraServer folder in this repo
+        "vi cameraserver.js"
+    - Edit 'cameraclient.html' using nano or vi, copy and paste the cameraclient.html in CameraServer folder in this repo
+        "vi cameraclient.html"
     - Install some library that we use for this project
         "npm install --save express"
         "npm install --save ws"
@@ -36,6 +36,7 @@ How to create CCTV Prototype using ESP32 Cam Module :
     - We can buy ESP 32 Cam Module like this (https://www.tokopedia.com/mechatron/esp32-cam-esp-32-esp-32-wifi-bluetooth-face-recognition-camera-ov2640)
     - We need FTDI programmer upload code in ESP32 Cam Module like this (https://www.tokopedia.com/mechatron/usb-to-ttl-serial-industrial-grade-uart-ftdi-ft232-ft232rl-ft-232)
     - Wiring the ESP 32 Cam Module and FTDI programmer like this (https://www.geekering.com/categories/embedded-sytems/esp32/ricardocarreira/esp32-cam-board-how-to-begin-and-blink-a-led/)
+    Pin to connect
     FTDI | ESP32 Cam Module
     GND - GND
     Vcc - 5V
@@ -59,9 +60,9 @@ How to create CCTV Prototype using ESP32 Cam Module :
 
 4. Connect CameraClient to CameraServer :
     - After success following step 2 about "Deploy Node.js CameraServer in VM", run the Node.js server
-        "sudo node server.js"
+        "sudo node cameraserver.js"
     - In Arduino IDE, open serial monitor and change the baud rate to 115200. Wait for confirmation "WebSocket connected" if not connected, check your ssid and password
-    - Open the client.html in your browser, (example: 34.126.131.88/client)
-    - CCTV Prototype connected and ready to access from browser and ready for further proccess in Machine Learning to detect
+    - Open the cameraclient.html in your browser, (example: 34.126.131.88/cameraclient)
+    - CCTV Prototype connected and ready for further proccess in Machine Learning
 
-For the reference we can watch https://youtu.be/CpIkG9N5-JM to visualize the step by step above
+For the reference we can watch https://youtu.be/CpIkG9N5-JM to visualize the step by step above.

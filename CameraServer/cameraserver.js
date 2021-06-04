@@ -6,10 +6,10 @@ const app = express();
 const WS_PORT  = 65080;
 const HTTP_PORT = 80;
 
-const wsServer = new WebSocket.Server({port: WS_PORT}, ()=> console.log(`WS Server is listening at ${WS_PORT}`));
+const cameraServer = new WebSocket.Server({port: WS_PORT}, ()=> console.log(`WS Server is listening at ${WS_PORT}`));
 
 let connectedClients = [];
-wsServer.on('connection', (ws, req)=>{
+cameraServer.on('connection', (ws, req)=>{
     console.log('Connected');
     connectedClients.push(ws);
 
@@ -24,5 +24,5 @@ wsServer.on('connection', (ws, req)=>{
     });
 });
 
-app.get('/client',(req,res)=>res.sendFile(path.resolve(__dirname, './client.html')));
+app.get('/cameraclient',(req,res)=>res.sendFile(path.resolve(__dirname, './cameraclient.html')));
 app.listen(HTTP_PORT, ()=> console.log(`HTTP server listening at ${HTTP_PORT}`));
